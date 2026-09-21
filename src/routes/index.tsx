@@ -105,27 +105,13 @@ function Index() {
     >
       <div className="mx-auto w-full max-w-md">
         <header className="mb-5 flex items-center gap-3">
-          <div
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl shadow-[0_10px_24px_-12px_rgba(37,99,235,0.6)]"
-            style={{
-              backgroundImage:
-                "linear-gradient(145deg, var(--uniplay-from), var(--uniplay-to))",
-            }}
-          >
-            <span
-              className="ml-0.5 block h-0 w-0"
-              style={{
-                borderTop: "8px solid transparent",
-                borderBottom: "8px solid transparent",
-                borderLeft: "13px solid oklch(1 0 0)",
-              }}
-            />
-          </div>
+          <img
+            src="/owerplay-logo.png"
+            alt="OwerPlay TV Online"
+            className="h-16 w-16 shrink-0 object-contain"
+          />
           <div>
-            <h1 className="text-2xl leading-none font-extrabold tracking-tight text-foreground">
-              OWER<span style={{ color: "var(--uniplay-from)" }}>PLAY</span>
-            </h1>
-            <p className="mt-1 text-[0.65rem] font-semibold tracking-[0.22em] text-muted-foreground uppercase">
+            <p className="text-sm font-bold tracking-[0.16em] text-foreground uppercase">
               Controle de créditos
             </p>
           </div>

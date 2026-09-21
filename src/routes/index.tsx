@@ -1,215 +1,105 @@
-// ============= Full file contents =============
-
 import { createFileRoute } from "@tanstack/react-router";
-import { BarChart3, PiggyBank, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "OWERPLAY — Controle de créditos" },
-      {
-        name: "description",
-        content: "Painel rápido com os saldos de créditos Uniplay, GOAT e a caixinha de reposição.",
-      },
-      { property: "og:title", content: "OWERPLAY — Controle de créditos" },
-      {
-        property: "og:description",
-        content: "Saldos de créditos Uniplay e GOAT e o valor da caixinha de reposição.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { name: "description", content: "Painel OwerPlay com saldos Uniplay, GOAT e caixinha de reposição." },
     ],
   }),
   component: Index,
 });
 
-function ServerCard({
-  name,
-  value,
-  theme,
-}: {
-  name: string;
-  value: number;
-  theme: "uniplay" | "goat";
-}) {
-  const uniplay = theme === "uniplay";
-  const from = uniplay ? "var(--uniplay-from)" : "var(--goat-from)";
-  const mid = uniplay ? "var(--uniplay-mid)" : "var(--goat-mid)";
-  const to = uniplay ? "var(--uniplay-to)" : "var(--goat-to)";
-  const accent = uniplay ? "var(--uniplay-accent)" : "var(--goat-accent)";
-  const shadow = uniplay
-    ? "0 22px 44px -20px rgba(29,78,216,0.55), 0 6px 16px -8px rgba(29,78,216,0.35)"
-    : "0 22px 44px -20px rgba(194,65,12,0.55), 0 6px 16px -8px rgba(194,65,12,0.35)";
+function ServerCard({ name, value, variant, server }: { name: string; value: number; variant: "uni" | "goat"; server: string }) {
+  const gradient =
+    variant === "uni"
+      ? "linear-gradient(145deg,#075ec9 0%,#0a9ed8 52%,#19c6d4 100%)"
+      : "linear-gradient(145deg,#d94b08 0%,#f57612 50%,#ffb32f 100%)";
 
   return (
-    <div
-      className="relative flex min-h-[168px] flex-col overflow-hidden rounded-3xl p-4"
-      style={{
-        backgroundImage: `linear-gradient(150deg, ${from}, ${mid} 52%, ${to})`,
-        border: "1px solid oklch(1 0 0 / 30%)",
-        boxShadow: shadow,
-      }}
+    <article
+      className="relative min-h-[178px] overflow-hidden rounded-[21px] p-4 text-white shadow-[inset_0_1px_rgba(255,255,255,.27)]"
+      style={{ background: gradient }}
     >
-      {/* iluminação superior sutil */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-20"
-        style={{
-          backgroundImage:
-            "linear-gradient(180deg, oklch(1 0 0 / 24%) 0%, oklch(1 0 0 / 0%) 100%)",
-        }}
-      />
-      {/* decorativos abstratos sutis */}
-      <div
-        className="pointer-events-none absolute -top-10 -right-8 h-28 w-28 rounded-full opacity-45 blur-2xl"
-        style={{ backgroundColor: accent }}
-      />
-      <div
-        className="pointer-events-none absolute -bottom-12 -left-6 h-32 w-40 rounded-full opacity-20"
-        style={{ backgroundColor: "oklch(1 0 0)" }}
-      />
-
-      <p
-        className="relative text-[0.6rem] font-semibold tracking-[0.24em] uppercase"
-        style={{ color: "oklch(1 0 0 / 75%)" }}
-      >
-        Servidor
-      </p>
-      <p
-        className="relative text-base font-bold tracking-wide uppercase"
-        style={{ color: "var(--card-ink)" }}
-      >
-        {name}
-      </p>
-
-      <p
-        className="relative mt-auto pb-0.5 text-6xl leading-none font-extrabold tabular-nums"
-        style={{ color: "var(--card-ink)", textShadow: "0 2px 10px oklch(0.2 0.05 260 / 18%)" }}
-      >
-        {value}
-      </p>
-      <p className="relative mt-1.5 text-xs" style={{ color: "oklch(1 0 0 / 85%)" }}>
-        créditos disponíveis
-      </p>
-    </div>
+      <div className="pointer-events-none absolute -right-[52px] -top-12 h-[120px] w-[120px] rounded-full border border-white/25" />
+      <div className="pointer-events-none absolute bottom-0 left-[15px] right-[15px] h-0.5 rounded-full bg-white/40" />
+      <div className="text-[8px] uppercase tracking-[.22em] text-white/75">{server}</div>
+      <div className="mt-1 text-[15px] font-extrabold">{name}</div>
+      <div className="relative mt-[39px] text-[63px] font-black leading-[.95] tracking-[-.05em]">{value}</div>
+      <div className="mt-2 text-[10px] text-white/80">créditos disponíveis</div>
+    </article>
   );
 }
 
 function Index() {
   return (
     <main
-      className="min-h-screen w-full px-5 py-6"
+      className="min-h-screen w-full px-[17px] pb-7 pt-[22px] text-[#eaf7ff]"
       style={{
+        backgroundColor: "#07111d",
         backgroundImage:
-          "radial-gradient(120% 70% at 50% 0%, oklch(0.99 0.014 235) 0%, var(--background) 65%)",
+          "radial-gradient(circle at 12% 0%,rgba(20,184,230,.20),transparent 30%),radial-gradient(circle at 100% 28%,rgba(255,154,53,.14),transparent 28%),linear-gradient(rgba(70,217,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(70,217,255,.035) 1px,transparent 1px)",
+        backgroundSize: "auto,auto,30px 30px,30px 30px",
       }}
     >
-      <div className="mx-auto w-full max-w-md">
-        <header className="mb-5 flex items-center gap-3">
-          <img
-            src="/owerplay-logo.png"
-            alt="OwerPlay TV Online"
-            className="h-[72px] w-[72px] shrink-0 object-contain"
-          />
-          <div>
-            <p className="text-sm font-bold tracking-[0.16em] text-foreground uppercase">
-              Controle de créditos
-            </p>
+      <div className="mx-auto w-full max-w-[430px]">
+        <header className="mb-[18px] flex items-center justify-between gap-2">
+          <div className="flex min-w-0 items-center gap-3">
+            <img
+              src="/owerplay-logo.png"
+              alt="OwerPlay TV Online"
+              className="h-[72px] w-[72px] shrink-0 object-contain drop-shadow-[0_8px_18px_rgba(0,0,0,.45)]"
+            />
+            <div className="min-w-0">
+              <span className="block text-[9px] uppercase tracking-[.2em] text-[#72e8ff]">Fusion Control</span>
+              <strong className="mt-1 block text-[18px] leading-tight">Controle de créditos</strong>
+            </div>
           </div>
+          <span className="shrink-0 rounded-full border border-[#77edc34d] bg-[#65e6ba10] px-[9px] py-[7px] text-[9px] tracking-[.13em] text-[#8cf3d0]">
+            ● ONLINE
+          </span>
         </header>
 
-        <section className="grid grid-cols-2 gap-3.5">
-          <ServerCard name="Uniplay" value={67} theme="uniplay" />
-          <ServerCard name="Goat" value={9} theme="goat" />
-        </section>
-
-        <section
-          className="relative mt-3.5 overflow-hidden rounded-[2rem] px-5 pt-6 pb-7 shadow-[0_28px_60px_-24px_rgba(5,150,105,0.55)]"
-          style={{
-            backgroundImage:
-              "linear-gradient(155deg, var(--vault-from), var(--vault-mid) 48%, var(--vault-to) 92%)",
-            border: "1px solid oklch(1 0 0 / 30%)",
-          }}
-        >
-          <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-24"
-            style={{
-              backgroundImage:
-                "linear-gradient(180deg, oklch(1 0 0 / 20%) 0%, oklch(1 0 0 / 0%) 100%)",
-            }}
-          />
-          <div
-            className="pointer-events-none absolute -top-16 left-1/2 h-44 w-44 -translate-x-1/2 rounded-full opacity-40 blur-3xl"
-            style={{ backgroundColor: "var(--vault-accent)" }}
-          />
-          <PiggyBank
-            className="pointer-events-none absolute -right-4 bottom-2 h-40 w-40 opacity-15"
-            style={{ color: "oklch(1 0 0)" }}
-          />
-
-          <div className="relative flex items-center gap-3">
-            <div
-              className="flex h-10 w-10 items-center justify-center rounded-2xl"
-              style={{ backgroundColor: "oklch(1 0 0 / 22%)" }}
-            >
-              <PiggyBank className="h-5 w-5" style={{ color: "var(--card-ink)" }} />
-            </div>
-            <div>
-              <p
-                className="text-sm font-bold tracking-[0.1em] uppercase"
-                style={{ color: "var(--card-ink)" }}
-              >
-                Caixinha de reposição
-              </p>
-              <p
-                className="mt-0.5 text-[0.6rem] font-semibold tracking-[0.22em] uppercase"
-                style={{ color: "oklch(1 0 0 / 80%)" }}
-              >
-                Sempre um passo à frente
-              </p>
-            </div>
+        <section className="rounded-[27px] border border-white/15 bg-white/[.055] p-[11px] shadow-[0_24px_70px_rgba(0,0,0,.38),inset_0_1px_rgba(255,255,255,.14)] backdrop-blur-[18px]">
+          <div className="grid grid-cols-2 gap-[10px]">
+            <ServerCard name="UNIPLAY" value={67} variant="uni" server="Servidor 01" />
+            <ServerCard name="GOAT" value={9} variant="goat" server="Servidor 02" />
           </div>
 
-          <p
-            className="relative mt-5 text-[3.6rem] leading-none font-extrabold tabular-nums"
-            style={{
-              color: "var(--card-ink)",
-              textShadow: "0 3px 14px oklch(0.15 0.04 165 / 25%)",
-            }}
+          <section
+            className="relative mt-[11px] overflow-hidden rounded-[22px] border border-[#9dffe24a] p-[21px] shadow-[inset_0_1px_rgba(255,255,255,.22)]"
+            style={{ background: "linear-gradient(140deg,#075d4a 0%,#07946c 48%,#18c58e 100%)" }}
           >
-            R$ 30,00
-          </p>
+            <div className="pointer-events-none absolute -right-[88px] -top-[78px] h-[205px] w-[205px] rounded-full border border-[#b6ffe455] shadow-[0_0_55px_rgba(67,245,184,.16)]" />
+            <div className="pointer-events-none absolute -bottom-12 right-4 h-[90px] w-[90px] rounded-full bg-white/[.07]" />
 
-          <div
-            className="relative mt-5 flex items-start gap-3 rounded-[1.25rem] px-4 py-3"
-            style={{
-              backgroundColor: "oklch(1 0 0 / 12%)",
-              border: "1px solid oklch(1 0 0 / 32%)",
-              backdropFilter: "blur(6px)",
-              WebkitBackdropFilter: "blur(6px)",
-            }}
-          >
-            <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0" style={{ color: "var(--card-ink)" }} />
-            <p className="text-xs leading-relaxed" style={{ color: "oklch(1 0 0 / 92%)" }}>
-              A cada crédito consumido, reserve <strong>R$ 10,00</strong> e mantenha seu estoque em
-              dia.
-            </p>
+            <div className="relative flex items-start justify-between gap-2">
+              <div>
+                <strong className="text-[15px]">Caixinha de reposição</strong>
+                <span className="mt-1 block text-[8px] uppercase tracking-[.18em] text-white/70">Reserva operacional</span>
+              </div>
+              <span className="rounded-full border border-white/25 bg-white/[.09] px-[9px] py-[7px] text-[8px] tracking-[.12em] text-[#d9fff3]">
+                EM DIA
+              </span>
+            </div>
+
+            <div className="relative mb-[17px] mt-[27px] text-[58px] font-black leading-none tracking-[-.05em]">R$ 30,00</div>
+            <div className="relative h-[7px] overflow-hidden rounded-full border border-white/10 bg-[#002d2466]">
+              <span className="block h-full w-[8%] bg-gradient-to-r from-[#a6ffe1] to-white" />
+            </div>
+            <div className="relative mt-[9px] flex justify-between gap-2 text-[9px] text-[#d2f8ebcc]">
+              <span>Acumulado atual</span>
+              <span>Meta R$ 375</span>
+            </div>
+          </section>
+
+          <div className="mt-[11px] rounded-[17px] border border-white/10 bg-white/[.035] px-[14px] py-3 text-[10px] leading-[1.5] text-[#91a8b7]">
+            <strong className="text-[#dff9ff]">R$ 10 por crédito consumido.</strong> A leitura continua simples, com a atmosfera tecnológica e a profundidade visual do Fusion.
           </div>
         </section>
 
-        <footer
-          className="mt-3.5 flex items-center gap-3 rounded-2xl px-5 py-3.5"
-          style={{
-            backgroundColor: "var(--surface)",
-            border: "1px solid oklch(0.22 0.04 262 / 12%)",
-            boxShadow:
-              "0 14px 30px -18px rgba(15,23,42,0.45), 0 3px 10px -4px rgba(15,23,42,0.12)",
-          }}
-        >
-          <BarChart3 className="h-5 w-5" style={{ color: "var(--uniplay-from)" }} />
-          <p className="text-[0.62rem] font-semibold tracking-[0.18em] text-muted-foreground uppercase">
-            Pequenos controles,{" "}
-            <span style={{ color: "var(--uniplay-from)" }}>grandes resultados.</span>
-          </p>
+        <footer className="mt-[14px] text-center text-[8px] uppercase tracking-[.2em] text-[#536b7d]">
+          OwerPlay • controle inteligente
         </footer>
       </div>
     </main>

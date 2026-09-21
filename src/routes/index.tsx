@@ -36,14 +36,14 @@ function ServerCard({
 
   return (
     <div
-      className="relative overflow-hidden rounded-3xl px-5 py-5 shadow-[0_18px_40px_-24px_rgba(0,0,0,0.9)]"
+      className="relative overflow-hidden rounded-3xl px-5 py-5 shadow-[0_18px_40px_-22px_rgba(29,78,216,0.45)]"
       style={{
         backgroundImage: `linear-gradient(150deg, ${from}, ${to})`,
         border: "1px solid var(--surface-border)",
       }}
     >
       <div
-        className="pointer-events-none absolute -top-16 -right-10 h-32 w-32 rounded-full opacity-25 blur-2xl"
+        className="pointer-events-none absolute -top-16 -right-10 h-32 w-32 rounded-full opacity-45 blur-2xl"
         style={{ backgroundColor: accent }}
       />
       <p
@@ -52,10 +52,15 @@ function ServerCard({
       >
         {name}
       </p>
-      <p className="mt-2 text-5xl leading-none font-semibold tabular-nums text-foreground">
+      <p
+        className="mt-2 text-5xl leading-none font-semibold tabular-nums"
+        style={{ color: "var(--card-ink)" }}
+      >
         {value}
       </p>
-      <p className="mt-2 text-xs text-muted-foreground">créditos disponíveis</p>
+      <p className="mt-2 text-xs" style={{ color: "oklch(1 0 0 / 80%)" }}>
+        créditos disponíveis
+      </p>
     </div>
   );
 }
@@ -66,7 +71,7 @@ function Index() {
       className="min-h-screen w-full px-5 py-7"
       style={{
         backgroundImage:
-          "radial-gradient(120% 70% at 50% 0%, oklch(0.24 0.05 263) 0%, var(--background) 60%)",
+          "radial-gradient(120% 70% at 50% 0%, oklch(0.99 0.012 240) 0%, var(--background) 65%)",
       }}
     >
       <div className="mx-auto w-full max-w-md">
@@ -86,15 +91,15 @@ function Index() {
         </section>
 
         <section
-          className="relative mt-5 overflow-hidden rounded-[2rem] px-6 py-9 shadow-[0_28px_60px_-28px_rgba(0,0,0,0.95)]"
+          className="relative mt-5 overflow-hidden rounded-[2rem] px-6 py-9 shadow-[0_28px_60px_-26px_rgba(5,150,105,0.5)]"
           style={{
             backgroundImage:
-              "linear-gradient(160deg, var(--vault-from), var(--vault-to) 85%)",
+              "linear-gradient(160deg, var(--vault-from), var(--vault-to) 90%)",
             border: "1px solid var(--surface-border)",
           }}
         >
           <div
-            className="pointer-events-none absolute -top-20 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full opacity-25 blur-3xl"
+            className="pointer-events-none absolute -top-20 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full opacity-40 blur-3xl"
             style={{ backgroundColor: "var(--vault-accent)" }}
           />
           <div className="relative flex items-center gap-3">
@@ -106,10 +111,13 @@ function Index() {
               Caixinha de reposição
             </p>
           </div>
-          <p className="relative mt-4 text-[3.25rem] leading-none font-semibold tabular-nums text-foreground">
+          <p
+            className="relative mt-4 text-[3.25rem] leading-none font-semibold tabular-nums"
+            style={{ color: "var(--card-ink)" }}
+          >
             R$ 20,00
           </p>
-          <p className="relative mt-4 text-xs text-foreground/60">
+          <p className="relative mt-4 text-xs" style={{ color: "oklch(1 0 0 / 85%)" }}>
             A cada crédito consumido, reserve R$ 10.
           </p>
         </section>

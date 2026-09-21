@@ -35,15 +35,16 @@ function ServerCard({
   const to = uniplay ? "var(--uniplay-to)" : "var(--goat-to)";
   const accent = uniplay ? "var(--uniplay-accent)" : "var(--goat-accent)";
   const shadow = uniplay
-    ? "0_20px_42px_-20px_rgba(37,99,235,0.55)"
-    : "0_20px_42px_-20px_rgba(234,88,12,0.55)";
+    ? "0 20px 42px -20px rgba(37,99,235,0.55)"
+    : "0 20px 42px -20px rgba(234,88,12,0.55)";
 
   return (
     <div
-      className={`relative flex min-h-[188px] flex-col overflow-hidden rounded-3xl p-4 shadow-[${shadow}]`}
+      className="relative flex min-h-[188px] flex-col overflow-hidden rounded-3xl p-4"
       style={{
         backgroundImage: `linear-gradient(145deg, ${from}, ${to})`,
         border: "1px solid oklch(1 0 0 / 28%)",
+        boxShadow: shadow,
       }}
     >
       {/* decorativos abstratos sutis */}

@@ -1,3 +1,5 @@
+// ============= Full file contents =============
+
 import { createFileRoute } from "@tanstack/react-router";
 import { BarChart3, PiggyBank, ShieldCheck } from "lucide-react";
 
@@ -32,24 +34,33 @@ function ServerCard({
 }) {
   const uniplay = theme === "uniplay";
   const from = uniplay ? "var(--uniplay-from)" : "var(--goat-from)";
+  const mid = uniplay ? "var(--uniplay-mid)" : "var(--goat-mid)";
   const to = uniplay ? "var(--uniplay-to)" : "var(--goat-to)";
   const accent = uniplay ? "var(--uniplay-accent)" : "var(--goat-accent)";
   const shadow = uniplay
-    ? "0 20px 42px -20px rgba(37,99,235,0.55)"
-    : "0 20px 42px -20px rgba(234,88,12,0.55)";
+    ? "0 22px 44px -20px rgba(29,78,216,0.55), 0 6px 16px -8px rgba(29,78,216,0.35)"
+    : "0 22px 44px -20px rgba(194,65,12,0.55), 0 6px 16px -8px rgba(194,65,12,0.35)";
 
   return (
     <div
-      className="relative flex min-h-[188px] flex-col overflow-hidden rounded-3xl p-4"
+      className="relative flex min-h-[168px] flex-col overflow-hidden rounded-3xl p-4"
       style={{
-        backgroundImage: `linear-gradient(145deg, ${from}, ${to})`,
-        border: "1px solid oklch(1 0 0 / 28%)",
+        backgroundImage: `linear-gradient(150deg, ${from}, ${mid} 52%, ${to})`,
+        border: "1px solid oklch(1 0 0 / 30%)",
         boxShadow: shadow,
       }}
     >
+      {/* iluminação superior sutil */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-20"
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, oklch(1 0 0 / 24%) 0%, oklch(1 0 0 / 0%) 100%)",
+        }}
+      />
       {/* decorativos abstratos sutis */}
       <div
-        className="pointer-events-none absolute -top-10 -right-8 h-28 w-28 rounded-full opacity-40 blur-2xl"
+        className="pointer-events-none absolute -top-10 -right-8 h-28 w-28 rounded-full opacity-45 blur-2xl"
         style={{ backgroundColor: accent }}
       />
       <div
@@ -71,8 +82,8 @@ function ServerCard({
       </p>
 
       <p
-        className="relative mt-auto text-6xl leading-none font-extrabold tabular-nums"
-        style={{ color: "var(--card-ink)" }}
+        className="relative mt-auto pb-0.5 text-6xl leading-none font-extrabold tabular-nums"
+        style={{ color: "var(--card-ink)", textShadow: "0 2px 10px oklch(0.2 0.05 260 / 18%)" }}
       >
         {value}
       </p>
@@ -128,12 +139,20 @@ function Index() {
         <section
           className="relative mt-3.5 overflow-hidden rounded-[2rem] px-5 pt-6 pb-7 shadow-[0_28px_60px_-24px_rgba(5,150,105,0.55)]"
           style={{
-            backgroundImage: "linear-gradient(155deg, var(--vault-from), var(--vault-to) 92%)",
-            border: "1px solid oklch(1 0 0 / 28%)",
+            backgroundImage:
+              "linear-gradient(155deg, var(--vault-from), var(--vault-mid) 48%, var(--vault-to) 92%)",
+            border: "1px solid oklch(1 0 0 / 30%)",
           }}
         >
           <div
-            className="pointer-events-none absolute -top-16 left-1/2 h-44 w-44 -translate-x-1/2 rounded-full opacity-35 blur-3xl"
+            className="pointer-events-none absolute inset-x-0 top-0 h-24"
+            style={{
+              backgroundImage:
+                "linear-gradient(180deg, oklch(1 0 0 / 20%) 0%, oklch(1 0 0 / 0%) 100%)",
+            }}
+          />
+          <div
+            className="pointer-events-none absolute -top-16 left-1/2 h-44 w-44 -translate-x-1/2 rounded-full opacity-40 blur-3xl"
             style={{ backgroundColor: "var(--vault-accent)" }}
           />
           <PiggyBank
@@ -166,16 +185,21 @@ function Index() {
 
           <p
             className="relative mt-5 text-[3.6rem] leading-none font-extrabold tabular-nums"
-            style={{ color: "var(--card-ink)" }}
+            style={{
+              color: "var(--card-ink)",
+              textShadow: "0 3px 14px oklch(0.15 0.04 165 / 25%)",
+            }}
           >
             R$ 20,00
           </p>
 
           <div
-            className="relative mt-5 flex items-start gap-3 rounded-2xl px-4 py-3"
+            className="relative mt-5 flex items-start gap-3 rounded-[1.25rem] px-4 py-3"
             style={{
-              backgroundColor: "oklch(1 0 0 / 16%)",
-              border: "1px solid oklch(1 0 0 / 28%)",
+              backgroundColor: "oklch(1 0 0 / 12%)",
+              border: "1px solid oklch(1 0 0 / 32%)",
+              backdropFilter: "blur(6px)",
+              WebkitBackdropFilter: "blur(6px)",
             }}
           >
             <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0" style={{ color: "var(--card-ink)" }} />
@@ -187,11 +211,12 @@ function Index() {
         </section>
 
         <footer
-          className="mt-3.5 flex items-center gap-3 rounded-2xl px-4 py-3"
+          className="mt-3.5 flex items-center gap-3 rounded-2xl px-5 py-3.5"
           style={{
             backgroundColor: "var(--surface)",
-            border: "1px solid oklch(0.22 0.04 262 / 8%)",
-            boxShadow: "0 10px 26px -20px rgba(15,23,42,0.5)",
+            border: "1px solid oklch(0.22 0.04 262 / 12%)",
+            boxShadow:
+              "0 14px 30px -18px rgba(15,23,42,0.45), 0 3px 10px -4px rgba(15,23,42,0.12)",
           }}
         >
           <BarChart3 className="h-5 w-5" style={{ color: "var(--uniplay-from)" }} />

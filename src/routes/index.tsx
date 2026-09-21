@@ -108,7 +108,7 @@ function Index() {
           <img
             src="/owerplay-logo.png"
             alt="OwerPlay TV Online"
-            className="h-16 w-16 shrink-0 object-contain"
+            className="h-[72px] w-[72px] shrink-0 object-contain"
           />
           <div>
             <p className="text-sm font-bold tracking-[0.16em] text-foreground uppercase">

@@ -51,13 +51,9 @@ function Index() {
               className="h-[72px] w-[72px] shrink-0 object-contain drop-shadow-[0_8px_18px_rgba(0,0,0,.45)]"
             />
             <div className="min-w-0">
-              <span className="block text-[9px] uppercase tracking-[.2em] text-[#72e8ff]">Fusion Control</span>
               <strong className="mt-1 block text-[18px] leading-tight">Controle de créditos</strong>
             </div>
           </div>
-          <span className="shrink-0 rounded-full border border-[#77edc34d] bg-[#65e6ba10] px-[9px] py-[7px] text-[9px] tracking-[.13em] text-[#8cf3d0]">
-            ● ONLINE
-          </span>
         </header>
 
         <section className="rounded-[27px] border border-white/15 bg-white/[.055] p-[11px] shadow-[0_24px_70px_rgba(0,0,0,.38),inset_0_1px_rgba(255,255,255,.14)] backdrop-blur-[18px]">
@@ -92,10 +88,6 @@ function Index() {
               <span>Meta R$ 375</span>
             </div>
           </section>
-
-          <div className="mt-[11px] rounded-[17px] border border-white/10 bg-white/[.035] px-[14px] py-3 text-[10px] leading-[1.5] text-[#91a8b7]">
-            <strong className="text-[#dff9ff]">R$ 10 por crédito consumido.</strong> A leitura continua simples, com a atmosfera tecnológica e a profundidade visual do Fusion.
-          </div>
         </section>
 
         <footer className="mt-[14px] text-center text-[8px] uppercase tracking-[.2em] text-[#536b7d]">

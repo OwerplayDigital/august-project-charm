@@ -132,8 +132,8 @@ function Index() {
         </header>
 
         <section className="grid grid-cols-2 gap-3.5">
-          <ServerCard name="Uniplay" value={68} theme="uniplay" />
-          <ServerCard name="Goat" value={10} theme="goat" />
+          <ServerCard name="Uniplay" value={67} theme="uniplay" />
+          <ServerCard name="Goat" value={9} theme="goat" />
         </section>
 
         <section
@@ -190,7 +190,7 @@ function Index() {
               textShadow: "0 3px 14px oklch(0.15 0.04 165 / 25%)",
             }}
           >
-            R$ 20,00
+            R$ 30,00
           </p>
 
           <div

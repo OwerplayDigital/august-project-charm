@@ -104,17 +104,20 @@
   --surface-border: oklch(1 0 0 / 22%);
   --card-ink: oklch(1 0 0);
 
-  --uniplay-from: oklch(0.56 0.22 256);
-  --uniplay-to: oklch(0.72 0.16 214);
-  --uniplay-accent: oklch(0.93 0.09 200);
+  --uniplay-from: oklch(0.52 0.23 262);
+  --uniplay-mid: oklch(0.6 0.2 240);
+  --uniplay-to: oklch(0.75 0.15 208);
+  --uniplay-accent: oklch(0.92 0.1 200);
 
-  --goat-from: oklch(0.68 0.2 45);
-  --goat-to: oklch(0.8 0.17 75);
-  --goat-accent: oklch(0.96 0.11 92);
+  --goat-from: oklch(0.62 0.22 42);
+  --goat-mid: oklch(0.71 0.2 60);
+  --goat-to: oklch(0.83 0.15 82);
+  --goat-accent: oklch(0.96 0.12 92);
 
-  --vault-from: oklch(0.58 0.17 162);
-  --vault-to: oklch(0.72 0.17 152);
-  --vault-accent: oklch(0.95 0.12 160);
+  --vault-from: oklch(0.47 0.15 166);
+  --vault-mid: oklch(0.58 0.16 160);
+  --vault-to: oklch(0.72 0.17 150);
+  --vault-accent: oklch(0.95 0.12 158);
 }
 
 .dark {
